@@ -11,7 +11,7 @@
 
 ## Overview
 
-This project is a simple demonstration of data extraction from ppt files with the goal of expanding to provide a full ETL experience. 
+This project is a simple demonstration of data extraction from ppt files with the goal of expanding to provide a full ETL experience. Preconfigured with Micronaut to be built with a Gradle Wrapper for ease.
 
 ## Setup and Installation
 
@@ -21,12 +21,12 @@ This project is a simple demonstration of data extraction from ppt files with th
 2. **Navigate to project directory**:
    ```bash
    cd jsonSlide
-3. **Open in Intellij or similar and allow Gradle to build the project. Alternatively, manually build it using a Gradle wrapper with the following:**:
+3. **Open in Intellij or similar and allow Gradle to build the project. Alternatively, you can build it as follows:**
    ```bash
    ./gradlew build
-4. **Run the application in your IDE. You can also use the following Gradle Wrapper command**
+4. **Run the application in your IDE. You can also use the following command:**
    ```bash
    ./gradlew run
-5. **Append the file path to your ppt to the address of your localhost session prefixed with "ppt?filePath="**
+5. **Append the localhost address with your PowerPoint file path. Be sure to prefix your PowerPoint path with "ppt?filePath="**
   ```bash
   http://localhost:8080/ppt?filePath=C:/Users/testUser/Desktop/testPowerPoint.pptx
