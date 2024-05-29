@@ -56,10 +56,12 @@ const StyledLink = styled.a`
 function App() {
   const [file, setFile] = useState<File | null>(null);
   const [jsonData, setJsonData] = useState<string>("");
+  const [fileName, setfileName] = useState<string>("");
 
   const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const file = event.target.files ? event.target.files[0] : null;
     setFile(file);
+    setfileName(file ? file.name : "");
   };
 
   const handleUpload = async () => {
@@ -75,8 +77,8 @@ function App() {
         const data = await response.json();
         setJsonData(JSON.stringify(data, null, 2));
       } catch (error) {
-        console.error("Error uploading file:", error);
-        setJsonData("Failed to upload file");
+        console.error("Error uploading file\n\n-Error Details-\n" + error);
+        setJsonData("Failed to upload file\n\n-Error Details-\n" + error);
       }
     }
   };
@@ -104,15 +106,15 @@ function App() {
             />
           </Button>
           <Box style={{ marginBottom: "20px" }}>
-            <Button variant="contained" color="primary" onClick={handleUpload}>
-              Convert to JSON
+            <Button variant="contained" color="primary" onClick={handleUpload} disabled={!file}>
+              {file ? "Convert to json" : "Waiting on file"}
             </Button>
           </Box>
           <Typography variant="body1" style={{ marginBottom: "10px" }}>
             JSON Output:
           </Typography>
           <JsonDisplay>
-            <pre>{jsonData}</pre>
+            <pre>{fileName ? `${fileName} is ready for JSON conversion...\n\n` : ''}{jsonData}</pre>
           </JsonDisplay>
         </StyledPaper>
         <StyledFooter>
