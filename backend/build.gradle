@@ -15,14 +15,17 @@ dependencies {
     annotationProcessor("io.micronaut:micronaut-http-validation")
     annotationProcessor("io.micronaut.serde:micronaut-serde-processor")
     implementation("io.micronaut.serde:micronaut-serde-jackson")
-    compileOnly("io.micronaut:micronaut-http-client")
-    runtimeOnly("ch.qos.logback:logback-classic")
-    testImplementation("io.micronaut:micronaut-http-client")
     implementation "org.apache.poi:poi-ooxml:5.2.5"
+    implementation "org.apache.logging.log4j:log4j-api:2.23.1"
+    implementation "org.apache.logging.log4j:log4j-core:2.23.1"
     implementation "com.fasterxml.jackson.core:jackson-databind:2.17.1"
     implementation "com.fasterxml.jackson.core:jackson-core:2.17.1"
     implementation "com.fasterxml.jackson.module:jackson-module-parameter-names:2.17.1"
     implementation "com.fasterxml.jackson.datatype:jackson-datatype-jsr310:2.17.1"
+    implementation("io.micronaut:micronaut-runtime")
+    implementation("io.micronaut:micronaut-http-server-netty")
+    implementation("io.micronaut:micronaut-http-client")
+    testImplementation("io.micronaut:micronaut-http-client")
 }
 
 
