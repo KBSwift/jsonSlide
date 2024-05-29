@@ -16,7 +16,7 @@ public class PowerPointService {
             XMLSlideShow ppt = new XMLSlideShow(inputStream);
             List<Map<String, Object>> slidesData = new ArrayList<>();
 
-            // Iterate over each slide in the presentation
+            // Iterating over each slide in case there are more in presentation
             for (XSLFSlide slide : ppt.getSlides()) {
                 Map<String, Object> currentSlideData = new LinkedHashMap<>();
                 currentSlideData.put("Title", slide.getTitle());
@@ -61,6 +61,13 @@ public class PowerPointService {
                         shapeInfo.put("width", anchor.getWidth());
                         shapeInfo.put("height", anchor.getHeight());
                         shapesInfo.add(shapeInfo);
+
+                        if (simpleShape instanceof XSLFAutoShape) {
+                            XSLFAutoShape autoShape = (XSLFAutoShape) simpleShape;
+                            shapeInfo.put("rotation", autoShape.getRotation());
+                            shapeInfo.put("flippedHorizontally", autoShape.getFlipHorizontal());
+                            shapeInfo.put("flippedVertically", autoShape.getFlipVertical());
+                        }
                     }
 
                 }
