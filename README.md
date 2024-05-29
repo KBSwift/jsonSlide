@@ -9,18 +9,18 @@ This project is a simple demonstration of data extraction from ppt files with th
 ## Technology Stack
 
 **Backend**
-- **Java**: Using Java 17
+- **Java**: Java 17
 - **Gradle**: Configured with Gradle Wrapper and predefined instructions for automatic build with Intellij or similar IDE
-- **Micronaut**: Using version 4.4.3. - Modern, JVM-based, full-stack microservices framework designed for building modular, easily testable microservice applications
-- **Apache POI**: Using version 5.2.5 - Java library for handling Microsoft Office documents
-- **Jackson**: Using version 2.17.1 - High-performance JSON processor for Java
+- **Micronaut**: Version 4.4.3. - Modern, JVM-based, full-stack microservices framework designed for building modular, easily testable microservice applications
+- **Apache POI**: Version 5.2.5 - Java library for handling Microsoft Office documents
+- **Jackson**: Version 2.17.1 - High-performance JSON processor for Java
 
 **Frontend**
-- **React**: Using version 18.2.0 - A JavaScript library for building user interfaces.
-- **Vite**: Using version 3.5.0 - Build tool chosen with SWC for Fast Refresh option
-- **TypeScript**: Using version 5.2.2 - Strongly typed JavaScript. Cause why not!
-- **Material-UI (MUI)**: Using version 5.15.18 - Popular React UI framework that provides styled components.
-- **styled-components**: Using version 5.1.34 - A library that utilizes tagged template literals to style your components.
+- **React**: Version 18.2.0 - A JavaScript library for building user interfaces.
+- **Vite**: Version 3.5.0 - Build tool chosen with SWC for Fast Refresh option
+- **TypeScript**: Version 5.2.2 - Strongly typed JavaScript. Cause why not!
+- **Material-UI (MUI)**: Version 5.15.18 - Popular React UI framework that provides styled components.
+- **styled-components**: Version 5.1.34 - A library that utilizes tagged template literals to style your components.
 
 ## Setup and Installation
 This project was created in a Windows environment. These instructions were made with Intellij, VS Code, Gradle wrapper, npm, default ports: React w/Vite 5173 // Micronaut 8080. Adjust as needed.
