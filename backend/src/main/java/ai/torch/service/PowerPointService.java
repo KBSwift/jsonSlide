@@ -1,9 +1,10 @@
 package ai.torch.service;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import io.micronaut.http.multipart.CompletedFileUpload;
 import jakarta.inject.Singleton;
 import org.apache.poi.xslf.usermodel.*;
 import java.awt.geom.Rectangle2D;
-import java.io.FileInputStream;
+import java.io.InputStream;
 import java.util.*;
 
 @Singleton
@@ -11,8 +12,8 @@ public class PowerPointService {
 
     private final ObjectMapper objectMapper = new ObjectMapper();
 
-    public String convertPowerPointToJson(String filePath) {
-        try (FileInputStream inputStream = new FileInputStream(filePath)) {
+    public String convertPowerPointToJson(CompletedFileUpload file) {
+        try (InputStream inputStream = file.getInputStream()) {
             XMLSlideShow ppt = new XMLSlideShow(inputStream);
             List<Map<String, Object>> slidesData = new ArrayList<>();
 
@@ -78,10 +79,10 @@ public class PowerPointService {
 
             }
 
-            return objectMapper.writeValueAsString(slidesData); // Convert the list of slide data to JSON string
+            return objectMapper.writeValueAsString(slidesData); // Converting list of slide data to JSON string
         } catch (Exception e) {
             e.printStackTrace();
-            return "Error processing file: " + e.getMessage(); // Handle possible errors
+            return "Error processing file: " + e.getMessage();
         }
     }
 
