@@ -1,5 +1,7 @@
 # jsonSlide - A PowerPoint to JSON Converter
 
+![image](https://github.com/KBSwift/jsonSlide/assets/15136449/4067e34a-3c6b-4214-a9c1-b6d10be5fb45)
+
 ## Overview
 
 This project is a simple demonstration of data extraction from ppt files with the goal of expanding to provide a full ETL experience. Preconfigured with Micronaut to be built with Gradle Wrapper for ease.
@@ -13,7 +15,15 @@ This project is a simple demonstration of data extraction from ppt files with th
 - **Apache POI**: Using version 5.2.5 - Java library for handling Microsoft Office documents
 - **Jackson**: Using version 2.17.1 - High-performance JSON processor for Java
 
+**Frontend**
+- **React**: Using version 18.2.0 - A JavaScript library for building user interfaces.
+- **Vite**: Using version 3.5.0 - Build tool chosen with SWC for Fast Refresh option
+- **TypeScript**: Using version 5.2.2 - Strongly typed JavaScript. Cause why not!
+- **Material-UI (MUI)**: Using version 5.15.18 - Popular React UI framework that provides styled components.
+- **styled-components**: Using version 5.1.34 - A library that utilizes tagged template literals to style your components.
+
 ## Setup and Installation
+This project was created in a Windows environment. These instructions were made with Intellij, VS Code, Gradle wrapper, npm, default ports: React w/Vite 5173 // Micronaut 8080. Adjust as needed.
 
 1. **Clone this repo**:
    ```bash
@@ -21,12 +31,16 @@ This project is a simple demonstration of data extraction from ppt files with th
 2. **Navigate to project directory**:
    ```bash
    cd jsonSlide
-3. **Open in Intellij or similar and allow Gradle to build the project. Alternatively, you can build it as follows:**
+3. **Import "backend" in Intellij or similar and allow Gradle to build the project. Alternatively, you can build it as follows:**
    ```bash
    ./gradlew build
-4. **Run the application in your IDE. You can also use the following command:**
+3. **Import "frontend" in VS Code or similar and install all necessary dependencies:**
+   ```bash
+   npm install
+4. **Bootstrap the backend by running the Application.java file in Intellij. Make sure it runs successfully on port 8080 You can also use the following command:**
    ```bash
    ./gradlew run
-5. **Append the localhost address with your PowerPoint file path. Be sure to prefix your PowerPoint path with "ppt?filePath="**
-  ```bash
-  http://localhost:8080/ppt?filePath=C:/Users/testUser/Desktop/testPowerPoint.pptx
+4. **Run the frontend by using the following command in the root of the directory, making sure it starts with port 5173:**
+   ```bash
+   npm run dev
+5. **The webapp will now be running at http://localhost:5173/. Upload your PowerPoint file and enjoy your JSON!**
