@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import styled, { createGlobalStyle } from 'styled-components';
 import { Button, Typography, Paper, Container, Box } from '@mui/material';
 import { CloudUpload as CloudUploadIcon } from '@mui/icons-material';
+import JsonViewer from './components/JsonViewer';
 
 const GlobalStyle = createGlobalStyle`
   body {
@@ -55,7 +56,7 @@ const StyledLink = styled.a`
 
 function App() {
   const [file, setFile] = useState<File | null>(null);
-  const [jsonData, setJsonData] = useState<string>("");
+  const [jsonData, setJsonData] = useState<object | null>(null);
   const [fileName, setfileName] = useState<string>("");
 
   const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -75,10 +76,11 @@ function App() {
           body: formData,
         });
         const data = await response.json();
-        setJsonData(JSON.stringify(data, null, 2));
+        setJsonData(data);
+        setfileName(file.name)
       } catch (error) {
         console.error("Error uploading file\n\n-Error Details-\n" + error);
-        setJsonData("Failed to upload file\n\n-Error Details-\n" + error);
+        // setJsonData("Failed to upload file\n\n-Error Details-\n" + error);
       }
     }
   };
@@ -114,7 +116,8 @@ function App() {
             JSON Output:
           </Typography>
           <JsonDisplay>
-            <pre>{fileName ? `${fileName} is ready for JSON conversion...\n\n` : ''}{jsonData}</pre>
+            {file && !jsonData && `${fileName} is ready for JSON conversion...\n\n`}
+            {jsonData && <JsonViewer jsonData={jsonData} />}
           </JsonDisplay>
         </StyledPaper>
         <StyledFooter>
