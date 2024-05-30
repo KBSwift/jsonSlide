@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
 import styled, { createGlobalStyle } from 'styled-components';
-import { Button, Typography, Paper, Container, Box } from '@mui/material';
+import { Button, Typography, Paper, Container, Box, IconButton, Snackbar } from '@mui/material';
 import { CloudUpload as CloudUploadIcon } from '@mui/icons-material';
+import { Tooltip } from '@mui/material';
+import ContentCopyIcon from "@mui/icons-material/ContentCopy";
 import JsonViewer from './components/JsonViewer';
 
 const GlobalStyle = createGlobalStyle`
@@ -33,6 +35,14 @@ const JsonDisplay = styled(Paper)`
   padding: 10px;
 `;
 
+const CopyButton = styled(IconButton)`
+  position: absolute;
+
+  &:hover {
+    
+  }
+`
+
 const StyledFooter = styled(Box)`
   width: 100%;
   padding: 20px 0px;
@@ -58,6 +68,7 @@ function App() {
   const [file, setFile] = useState<File | null>(null);
   const [jsonData, setJsonData] = useState<object | null>(null);
   const [fileName, setfileName] = useState<string>("");
+  const [openSnackbar, setOpenSnackbar] = useState(false);
 
   const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const file = event.target.files ? event.target.files[0] : null;
@@ -85,12 +96,17 @@ function App() {
     }
   };
 
+  const handleCopy = async () => {
+      await navigator.clipboard.writeText(JSON.stringify(jsonData));
+      setOpenSnackbar(true);
+  };
+
   return (
     <>
       <GlobalStyle />
       <StyledContainer maxWidth="sm">
         <StyledPaper elevation={5}>
-          <Typography variant="h4" style={{ marginBottom: "50px" }}>
+          <Typography variant="h4" style={{ marginBottom: "35px" }}>
             Welcome to jsonSlide!
           </Typography>
           <Button
@@ -115,6 +131,13 @@ function App() {
           <Typography variant="body1" style={{ marginBottom: "10px" }}>
             JSON Output:
           </Typography>
+          {jsonData && (
+            <CopyButton onClick={handleCopy} aria-label='copy'>
+              <Tooltip title="Copy to clipboard" placement='right'>
+                <ContentCopyIcon />
+              </Tooltip>
+            </CopyButton>
+          )}
           <JsonDisplay>
             {file && !jsonData && `${fileName} is ready for JSON conversion...\n\n`}
             {jsonData && <JsonViewer jsonData={jsonData} />}
