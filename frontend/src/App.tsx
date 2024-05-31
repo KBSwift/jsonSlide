@@ -91,7 +91,8 @@ function App() {
         setfileName(file.name)
       } catch (error) {
         console.error("Error uploading file:" + error);
-        setJsonData({ errorMessage: "Failed to upload file", error: (error as Error).message });
+        alert("Conversion failed! Creating error JSON instead.")
+        setJsonData({ warning: "Error occurred", errorMessage: "Failed to upload file", errorDetails: (error as Error).message });
       }
     }
   };
