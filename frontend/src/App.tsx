@@ -90,8 +90,8 @@ function App() {
         setJsonData(data);
         setfileName(file.name)
       } catch (error) {
-        console.error("Error uploading file\n\n-Error Details-\n" + error);
-        // setJsonData("Failed to upload file\n\n-Error Details-\n" + error);
+        console.error("Error uploading file:" + error);
+        setJsonData({ errorMessage: "Failed to upload file", error: (error as Error).message });
       }
     }
   };
@@ -160,7 +160,7 @@ function App() {
           vertical: 'top',
           horizontal: 'center',
         }}
-        style={{ top: "10vh", transform: 'translateX(-42%)'}}
+        style={{ top: "10vh", transform: 'translateX(-42%)' }}
       >
         <StyledSnackbarContent message="JSON data copied!" />
       </Snackbar>
