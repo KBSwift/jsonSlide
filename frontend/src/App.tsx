@@ -148,8 +148,8 @@ function App() {
           </JsonDisplay>
         </StyledPaper>
         <StyledFooter>
-          © {new Date().getFullYear()} <StyledLink href='https://github.com/KBSwift/jsonSlide' target='_blank'>jsonSlide</StyledLink>.
-          MVP by <StyledLink href='https://www.linkedin.com/in/kavinmoreno/' target='_blank'>Kavin Moreno</StyledLink>. BFF (Built For Fun).
+          - ©{new Date().getFullYear()} <StyledLink href='https://github.com/KBSwift/jsonSlide' target='_blank'>jsonSlide</StyledLink> -
+          MVP by <StyledLink href='https://www.linkedin.com/in/kavinmoreno/' target='_blank'>Kavin Moreno</StyledLink> - BFF (Built For Fun) -
         </StyledFooter>
       </StyledContainer>
       <Snackbar
