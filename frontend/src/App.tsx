@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import styled, { createGlobalStyle } from 'styled-components';
-import { Button, Typography, Paper, Container, Box, IconButton, Snackbar } from '@mui/material';
+import { Button, Typography, Paper, Container, Box, IconButton, Snackbar, SnackbarContent } from '@mui/material';
 import { CloudUpload as CloudUploadIcon } from '@mui/icons-material';
 import { Tooltip } from '@mui/material';
 import ContentCopyIcon from "@mui/icons-material/ContentCopy";
@@ -37,10 +37,6 @@ const JsonDisplay = styled(Paper)`
 
 const CopyButton = styled(IconButton)`
   position: absolute;
-
-  &:hover {
-    
-  }
 `
 
 const StyledFooter = styled(Box)`
@@ -62,6 +58,10 @@ const StyledLink = styled.a`
     text-decoration: underline; 
     color: #34a6db ; 
   }
+`;
+
+const StyledSnackbarContent = styled(SnackbarContent)`
+  justify-content: center;  // Centers the content horizontally
 `;
 
 function App() {
@@ -97,9 +97,13 @@ function App() {
   };
 
   const handleCopy = async () => {
-      await navigator.clipboard.writeText(JSON.stringify(jsonData));
-      setOpenSnackbar(true);
+    await navigator.clipboard.writeText(JSON.stringify(jsonData));
+    setOpenSnackbar(true);
   };
+
+  const handleCloseSnackbar = () => {
+    setOpenSnackbar(false);
+  }
 
   return (
     <>
@@ -132,7 +136,7 @@ function App() {
             JSON Output:
           </Typography>
           {jsonData && (
-            <CopyButton onClick={handleCopy} aria-label='copy'>
+            <CopyButton onClick={handleCopy} aria-label='copy JSON to clipboard'>
               <Tooltip title="Copy to clipboard" placement='right'>
                 <ContentCopyIcon />
               </Tooltip>
@@ -148,6 +152,18 @@ function App() {
           MVP by <StyledLink href='https://www.linkedin.com/in/kavinmoreno/' target='_blank'>Kavin Moreno</StyledLink>. BFF (Built For Fun).
         </StyledFooter>
       </StyledContainer>
+      <Snackbar
+        open={openSnackbar}
+        autoHideDuration={1000}
+        onClose={handleCloseSnackbar}
+        anchorOrigin={{
+          vertical: 'top',
+          horizontal: 'center',
+        }}
+        style={{ top: "10vh", transform: 'translateX(-42%)'}}
+      >
+        <StyledSnackbarContent message="JSON data copied!" />
+      </Snackbar>
     </>
   );
 }
