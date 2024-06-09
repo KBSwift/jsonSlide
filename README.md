@@ -4,7 +4,7 @@
 
 ## Overview
 
-This project is a simple demonstration of data extraction from ppt files with the goal of expanding to provide a full ETL experience. Preconfigured with Micronaut to be built with Gradle Wrapper for ease.
+This project is a simple demonstration of data extraction from ppt files with the goal of expanding to provide a full ETL experience. Packaged with Micronaut to be built with Gradle Wrapper for ease.
 
 ## Technology Stack
 
